@@ -153,12 +153,12 @@ const showNewRoster=state.rosterRevision!=='faction-masters-v1';if(showNewRoster
 let cam={x:0,y:0},last=0,attackCd=0,slashFx=0,saveTick=0,shake=0,facing=0,walkFrame=0,walkClock=0,moving=false,heroAction='idle',heroActionT=0,heroActionD=1,heroAnimT=0,heroDefeatT=0;
 const heroWalkSeq=[0,1,2,3,2,1];
 const heroAnimProfiles={
-  'thieu-lam':{primary:'attack',attackMs:390,dashMs:300,castMs:520},
-  'thien-vuong':{style:'heavy',primary:'attack',attackMs:470,dashMs:340,castMs:560,walkSpeed:.010,walkBob:2.2,walkRoll:.018,idleBob:1.1,idleSway:.008,glow:'#ffd66f'},
-  'duong-mon':{style:'marksman',primary:'attack',attackMs:330,dashMs:260,castMs:460,walkSpeed:.016,walkBob:3.4,walkRoll:.028,idleBob:1.5,idleSway:.012,glow:'#9cff91'},
-  'ngu-doc':{style:'ritual',primary:'cast',attackMs:520,dashMs:320,castMs:650,walkSpeed:.011,walkBob:2.6,walkRoll:.035,idleBob:2,idleSway:.026,glow:'#c56cff'},
-  'nga-my':{style:'healer',primary:'cast',attackMs:480,dashMs:310,castMs:700,walkSpeed:.010,walkBob:2.1,walkRoll:.018,idleBob:2.4,idleSway:.014,glow:'#83e7ff'},
-  'thuy-yen':{style:'assassin',primary:'attack',attackMs:290,dashMs:230,castMs:430,walkSpeed:.019,walkBob:3.8,walkRoll:.042,idleBob:1.6,idleSway:.018,glow:'#a7ecff'}
+  'thieu-lam':{primary:'attack',attackMs:390,dashMs:300,castMs:520,spriteScale:.87,anchorX:0,anchorY:17},
+  'thien-vuong':{style:'heavy',primary:'attack',attackMs:470,dashMs:340,castMs:560,walkSpeed:.010,walkBob:2.2,walkRoll:.018,idleBob:1.1,idleSway:.008,glow:'#ffd66f',spriteScale:.94,anchorX:0,anchorY:17},
+  'duong-mon':{style:'marksman',primary:'attack',attackMs:330,dashMs:260,castMs:460,walkSpeed:.016,walkBob:3.4,walkRoll:.028,idleBob:1.5,idleSway:.012,glow:'#9cff91',spriteScale:.88,anchorX:-1,anchorY:17},
+  'ngu-doc':{style:'ritual',primary:'cast',attackMs:520,dashMs:320,castMs:650,walkSpeed:.011,walkBob:2.6,walkRoll:.035,idleBob:2,idleSway:.026,glow:'#c56cff',spriteScale:.82,anchorX:-3,anchorY:17},
+  'nga-my':{style:'healer',primary:'cast',attackMs:480,dashMs:310,castMs:700,walkSpeed:.010,walkBob:2.1,walkRoll:.018,idleBob:2.4,idleSway:.014,glow:'#83e7ff',spriteScale:.92,anchorX:0,anchorY:17},
+  'thuy-yen':{style:'assassin',primary:'attack',attackMs:290,dashMs:230,castMs:430,walkSpeed:.019,walkBob:3.8,walkRoll:.042,idleBob:1.6,idleSway:.018,glow:'#a7ecff',spriteScale:.93,anchorX:0,anchorY:17}
 };
 function heroProfile(id=state.character){return heroAnimProfiles[id]||heroAnimProfiles['thieu-lam']}
 function animCurve(p,stops){for(let i=1;i<stops.length;i++)if(p<=stops[i][0]){let a=stops[i-1],b=stops[i],t=(p-a[0])/(b[0]-a[0]);t=t*t*(3-2*t);return a[1]+(b[1]-a[1])*t}return stops[stops.length-1][1]}
